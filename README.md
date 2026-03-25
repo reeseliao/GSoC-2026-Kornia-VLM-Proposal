@@ -27,10 +27,10 @@ The `kornia-vlm` and Bubbaloop ecosystems are pioneering the deployment of local
 
 This project aims to bridge this gap by architecting a high-performance **ONNX Runtime (ORT) backend powered by TensorRT Execution Providers**. By expanding `kornia-rs` into this currently unexplored territory, this project will enable hardware-accelerated, quantized (INT4/INT8) VLM inference. The ultimate deliverable is a seamless C++/Rust pipeline directly powering a real-time visual Q&A and scene understanding application within the Bubbaloop environment.
 
-**Motivation: Conquering the Edge Inference "Wasteland"**
+**Motivation: Why This Project**
 My passion for this project stems directly from my recent engineering obsession: squeezing maximum inference speed out of constrained hardware (AI-PCs and Edge Devices). I noticed that while Kornia provides excellent vision primitives, the ONNX/TensorRT VLM pipeline is currently a greenfield project waiting to be optimized.
 
-When architecting a local multimodal semantic video search engine recently, I learned the hard way that CPU-bound inference or unoptimized backends introduce severe latency (e.g., ~5.1s/frame for VLMs). To solve this within the Kornia ecosystem, I recently dove into the `kornia-rs` codebase and developed the dynamic device routing logic for ONNX Runtime (handling CUDA/CPU fallbacks), familiarizing me with ort's execution provider API and Kornia's image tensor pipeline and Kornia's image tensor scaling ops (`kornia::image::ops::cast_and_scale`).
+When architecting a local multimodal semantic video search engine recently, I learned the hard way that CPU-bound inference or unoptimized backends introduce severe latency (e.g., ~5.1s/frame for VLMs). To solve this within the Kornia ecosystem, I recently dove into the `kornia-rs` codebase and developed the dynamic device routing logic for ONNX Runtime (handling CUDA/CPU fallbacks), familiarizing me with ort's execution provider API and Kornia's image tensor scaling ops (`kornia::image::ops::cast_and_scale`).
 
 This hands-on experience proved to me that the true potential of Bubbaloop on edge devices lies in bypassing software overhead and directly hooking into NVIDIA's TensorRT engines. I am eager to combine my C++/Rust proficiency and my experience with compiled model caching to build the absolute fastest local VLM experience for the Kornia community.
 ## 2. Technical Architecture & Engineering Strategy
